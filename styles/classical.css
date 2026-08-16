@@ -127,9 +127,10 @@
 .classical :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 .classical ::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
 
-/* — 写真用マット枠 — */
+/* — 写真用マット枠 —
+   元のClassicalは filter: sepia(0.22) saturate(0.82) contrast(1.05) を掛けていたが、
+   写真を元データの色で見せたいという依頼のため外している。枠だけ残す。 */
 .classical .plate {
-  filter: sepia(0.22) saturate(0.82) contrast(1.05);
   box-sizing: border-box;
   border: 6px solid var(--color-surface);
   outline: 1px solid var(--color-divider);
@@ -319,6 +320,45 @@
 }
 @media (max-width: 480px) {
   .classical .lp-flow { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ギャラリーは PC 3列 / スマホ 2列3行 */
+.classical .lp-gallery { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) {
+  .classical .lp-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* スマホの余白と文字サイズの調整。
+   JSX側が inline style で寸法を持っているため、ここは !important で上書きする。 */
+@media (max-width: 640px) {
+  .classical .lp-header { padding: var(--space-3) var(--space-4) !important; }
+  .classical .lp-header img { height: 30px !important; }
+
+  .classical .lp-section {
+    padding: calc(var(--space-8) * 1.1) var(--space-4) !important;
+  }
+  .classical .lp-section > div { padding-left: 0 !important; padding-right: 0 !important; }
+
+  .classical .lp-intro { padding: calc(var(--space-8) * 1.1) var(--space-4) !important; }
+  .classical .lp-catch { font-size: 21px !important; }
+  .classical .lp-lead { font-size: 15px !important; line-height: 1.9 !important; }
+
+  .classical .lp-eyebrow { font-size: 12px !important; letter-spacing: 0.12em !important; }
+  .classical .lp-plan-eyebrow { font-size: 30px !important; }
+  .classical .lp-h2 { font-size: 25px !important; }
+
+  .classical .lp-section .card { padding: var(--space-6) !important; }
+  .classical .lp-price { font-size: 24px !important; }
+
+  .classical .lp-cta { padding: 0 var(--space-4) !important; }
+  .classical .lp-cta-title { font-size: 23px !important; line-height: 1.4 !important; }
+
+  .classical .lp-footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: var(--space-3) !important;
+    padding: var(--space-6) var(--space-4) !important;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

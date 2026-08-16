@@ -56,6 +56,7 @@ export default function LpPage() {
   return (
     <div className="classical" style={{ overflowX: "hidden" }}>
       <header
+        className="lp-header"
         style={{
           display: "flex",
           alignItems: "center",
@@ -83,6 +84,7 @@ export default function LpPage() {
       </section>
 
       <section
+        className="lp-intro"
         style={{
           maxWidth: 640,
           margin: "0 auto",
@@ -100,6 +102,7 @@ export default function LpPage() {
             color: "var(--color-accent-700)",
             marginBottom: "var(--space-3)",
           }}
+          className="lp-catch"
         >
           日常は最高の宝物
         </div>
@@ -113,6 +116,7 @@ export default function LpPage() {
             margin: 0,
             color: "var(--color-neutral-700)",
           }}
+          className="lp-lead"
         >
           1日、1月、1年。
           <br />
@@ -134,6 +138,7 @@ export default function LpPage() {
         <div style={{ maxWidth: 1040, margin: "0 auto", padding: "0 var(--space-6)" }}>
           <div style={{ textAlign: "center", marginBottom: "calc(var(--space-8) * 1.25)" }}>
             <div
+              className="lp-plan-eyebrow"
               style={{
                 fontFamily: "var(--font-heading)",
                 color: "var(--color-accent-700)",
@@ -213,6 +218,7 @@ export default function LpPage() {
                   ))}
                 </ul>
                 <div
+                  className="lp-price"
                   style={{
                     fontFamily: "var(--font-heading)",
                     fontVariantNumeric: "lining-nums tabular-nums",
@@ -234,6 +240,7 @@ export default function LpPage() {
       <section className="lp-section">
         <div style={{ textAlign: "center", marginBottom: "calc(var(--space-8) * 1.25)" }}>
           <div
+            className="lp-eyebrow"
             style={{
               fontFamily: "var(--font-heading)",
               color: "var(--color-accent-700)",
@@ -245,6 +252,7 @@ export default function LpPage() {
             FLOW
           </div>
           <h2
+            className="lp-h2"
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 400,
@@ -317,6 +325,7 @@ export default function LpPage() {
       <section className="lp-section">
         <div style={{ textAlign: "center", marginBottom: "var(--space-8)" }}>
           <div
+            className="lp-eyebrow"
             style={{
               fontFamily: "var(--font-heading)",
               color: "var(--color-accent-700)",
@@ -328,6 +337,7 @@ export default function LpPage() {
             GALLERY
           </div>
           <h2
+            className="lp-h2"
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 400,
@@ -339,12 +349,8 @@ export default function LpPage() {
           </h2>
         </div>
         <div
-          className="lp-2col"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "var(--space-4)",
-          }}
+          className="lp-gallery"
+          style={{ display: "grid", gap: "var(--space-4)" }}
         >
           {Array.from({ length: galleryCount }, (_, i) => (
             <div key={i} className="plate" style={{ aspectRatio: "3 / 2" }}>
@@ -370,8 +376,9 @@ export default function LpPage() {
           paddingBottom: "calc(var(--space-8) * 2)",
         }}
       >
-        <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 var(--space-6)" }}>
+        <div className="lp-cta" style={{ maxWidth: 640, margin: "0 auto", padding: "0 var(--space-6)" }}>
           <h2
+            className="lp-cta-title"
             style={{
               fontFamily: "var(--font-heading)",
               fontWeight: 400,
@@ -389,6 +396,7 @@ export default function LpPage() {
       </section>
 
       <footer
+        className="lp-footer"
         style={{
           maxWidth: 1040,
           margin: "0 auto",
