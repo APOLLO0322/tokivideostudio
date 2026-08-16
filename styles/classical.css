@@ -335,6 +335,14 @@
   .classical .lp-gallery { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
+/* グリッドの子は既定が min-width:auto のため、中の画像の実寸（2000px）が
+   最小幅として効いて列がはみ出すことがある。0を明示して 1fr に従わせる。 */
+.classical .lp-gallery > *,
+.classical .lp-2col > *,
+.classical .lp-flow > * {
+  min-width: 0;
+}
+
 /* スマホの余白と文字サイズの調整。
    JSX側が inline style で寸法を持っているため、ここは !important で上書きする。 */
 @media (max-width: 640px) {
@@ -357,8 +365,14 @@
   .classical .lp-section .card { padding: var(--space-6) !important; }
   .classical .lp-price { font-size: 24px !important; }
 
-  .classical .lp-cta { padding: 0 var(--space-4) !important; }
-  .classical .lp-cta-title { font-size: 23px !important; line-height: 1.4 !important; }
+  /* セクション側で既に左右余白があるので、CTA内側の余白は殺して幅を稼ぐ */
+  .classical .lp-cta { padding: 0 !important; }
+  /* 見出しを必ず1行に収める。vw側は狭い端末（320px）でも溢れない値。 */
+  .classical .lp-cta-title {
+    font-size: min(18px, 4.7vw) !important;
+    line-height: 1.5 !important;
+    white-space: nowrap;
+  }
 
   .classical .lp-footer {
     flex-direction: column !important;
