@@ -1,0 +1,339 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Classical — デザインシステムのトークンとコンポーネントクラス
+   出典: design_handoff_reservation_form/_ds/classical-450dbd81-.../styles.css
+
+   既存ページ（Tailwind ベース）に影響を出さないため、全ルールを `.classical`
+   スコープ配下に置いている。Classical のデザインを使うページは、最外側の要素に
+   `className="classical"` を付けること。
+   フォントは app/layout.tsx の next/font（--font-cormorant / --font-lora）から供給。
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.classical {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201f1d;
+  --color-accent: #b68235;
+  --color-accent-2: #ac803e;
+  --color-divider: color-mix(in srgb, #201f1d 16%, transparent);
+
+  /* Tonal ramps — OKLCH の共通ライトネススケールで生成されているため、
+     どのロールも同じステップ同士が同じ視覚的な明度で揃う。 */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff3e4;
+  --color-accent-200: #ffe3bf;
+  --color-accent-300: #facb8d;
+  --color-accent-400: #e1ad66;
+  --color-accent-500: #c28d41;
+  --color-accent-600: #a06f24;
+  --color-accent-700: #7d5411;
+  --color-accent-800: #5a3b0a;
+  --color-accent-900: #3a270d;
+
+  --color-accent-2-100: #fff3e4;
+  --color-accent-2-200: #ffe3be;
+  --color-accent-2-300: #f5cd96;
+  --color-accent-2-400: #dbaf70;
+  --color-accent-2-500: #bc8f4e;
+  --color-accent-2-600: #9b7232;
+  --color-accent-2-700: #79561f;
+  --color-accent-2-800: #573d14;
+  --color-accent-2-900: #382810;
+
+  /* 欧文は Cormorant Garamond / Lora、和文は既存サイトの Zen Kaku にフォールバック */
+  --font-heading: var(--font-cormorant), var(--font-zen-kaku), serif;
+  --font-heading-weight: 600;
+  --font-body: var(--font-lora), var(--font-zen-kaku), sans-serif;
+
+  --space-1: 4.6px;
+  --space-2: 9.2px;
+  --space-3: 13.8px;
+  --space-4: 18.4px;
+  --space-5: 23px; /* 元のstyles.cssには無いが、デザイン参照が参照しているため補完 */
+  --space-6: 27.6px;
+  --space-7: 32.2px; /* 同上（欠番の補完） */
+  --space-8: 36.8px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 7px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.classical *,
+.classical *::before,
+.classical *::after {
+  box-sizing: border-box;
+}
+
+.classical h1,
+.classical h2,
+.classical h3,
+.classical h4,
+.classical h5,
+.classical h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-2);
+}
+.classical h1 { font-size: 42px; }
+.classical h2 { font-size: 32px; }
+.classical h3 { font-size: 25px; }
+.classical h4 { font-size: 20px; }
+.classical h5 { font-size: 16px; }
+.classical h6 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+.classical p { margin: 0 0 var(--space-3); }
+.classical a {
+  color: var(--color-accent-700);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+.classical a:hover { color: var(--color-accent-600); text-decoration: underline; }
+.classical img { display: block; max-width: 100%; }
+.classical figure { margin: 0; }
+.classical figcaption {
+  font-size: 11px;
+  margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.classical .text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.classical :focus { outline: none; }
+.classical :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.classical ::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — 写真用マット枠 — */
+.classical .plate {
+  filter: sepia(0.22) saturate(0.82) contrast(1.05);
+  box-sizing: border-box;
+  border: 6px solid var(--color-surface);
+  outline: 1px solid var(--color-divider);
+}
+
+/* — 罫線 — */
+.classical .hr {
+  height: 1px;
+  border: 0;
+  margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — ボタン — */
+.classical .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.classical .btn svg { display: block; }
+.classical .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.classical .btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.classical .btn-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  text-decoration: none;
+}
+.classical .btn-primary:active:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.classical .btn-secondary { border-color: var(--color-divider); }
+.classical .btn-secondary:hover:not(:disabled) { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.classical .btn-secondary:active:not(:disabled) { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.classical .btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.classical .btn-ghost:hover:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.classical .btn-ghost:active:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.classical .btn-icon { width: 36px; height: 36px; padding: 0; }
+.classical .btn-block { width: 100%; margin-top: var(--space-2); }
+
+/* — フォーム — */
+.classical .field > label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.classical .input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--color-text);
+  caret-color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.classical .input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.classical .input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+.classical textarea.input { min-height: 90px; resize: vertical; }
+.classical .input-error,
+.classical .input-error:hover { border-color: #b3261e; }
+
+.classical .radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.classical .radio input,
+.classical .seg-opt input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.classical .radio .dot {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.classical .radio:hover .dot { border-color: var(--color-accent); }
+.classical .radio input:checked + .dot {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.classical .radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.classical .seg {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.classical .seg-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.classical .seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.classical .seg-opt:has(input:checked) { color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.classical .seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.classical .seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — カード — */
+.classical .card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+}
+.classical .card-kicker {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.classical .card-title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.2;
+}
+.classical .card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.classical .card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.classical .elev-sm { box-shadow: var(--shadow-sm); }
+.classical .elev-md { box-shadow: var(--shadow-md); }
+.classical .elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — タグ — */
+.classical .tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.classical .tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.classical .tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.classical .tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.classical .tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ページ固有 — LP（app/lp/page.tsx）
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.classical .lp-section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: calc(var(--space-8) * 2) var(--space-6);
+}
+@media (max-width: 860px) {
+  .classical .lp-2col { grid-template-columns: 1fr !important; }
+  .classical .lp-flow {
+    grid-template-columns: repeat(3, 1fr) !important;
+    row-gap: var(--space-6) !important;
+  }
+  .classical .lp-flow > .lp-flow-line { display: none; }
+}
+@media (max-width: 480px) {
+  .classical .lp-flow { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ページ固有 — お申し込み（app/apply/page.tsx）
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.classical .rc-bar {
+  background: var(--color-accent-700);
+  color: #fff;
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-heading);
+  font-size: 18px;
+}
+.classical .rc-body { padding: var(--space-6); }
+.classical .rc-card {
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  background: var(--color-bg);
+}
+.classical .rc-required { color: var(--color-accent-700); margin-left: 2px; }
+.classical .rc-error { color: #b3261e; font-size: 12px; margin: 5px 0 0; }
