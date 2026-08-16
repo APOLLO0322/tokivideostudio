@@ -105,16 +105,8 @@ export default function ApplyForm() {
           background: "var(--color-bg)",
         }}
       >
-        <Link
-          href="/lp"
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 600,
-            fontSize: 20,
-            color: "var(--color-text)",
-          }}
-        >
-          トキ映像製作所
+        <Link href="/lp" style={{ display: "inline-flex" }}>
+          <img src="/logo.png" alt="トキ映像製作所" style={{ height: 32, width: "auto" }} />
         </Link>
       </header>
 

@@ -1,6 +1,7 @@
 // app/lp/page.tsx — サイトリニューアル提案のLP（デザイン参照: トキ映像製作所 LP.dc.html）
 import Link from "next/link";
 import ImageSlot from "@/components/classical/ImageSlot";
+import HeroVideos from "@/components/classical/HeroVideos";
 import "@/styles/classical.css";
 
 export const metadata = {
@@ -66,26 +67,19 @@ export default function LpPage() {
           margin: "0 auto",
         }}
       >
-        <div
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 600,
-            fontSize: 22,
-            letterSpacing: "0.02em",
-            whiteSpace: "nowrap",
-            flexShrink: 0,
-          }}
-        >
-          トキ映像製作所
-        </div>
+        <img
+          src="/logo.png"
+          alt="トキ映像製作所"
+          style={{ height: 36, width: "auto", flexShrink: 0 }}
+        />
         <Link href="/apply" className="btn btn-primary">
           お申し込み
         </Link>
       </header>
 
       <section style={{ width: "100%", aspectRatio: "16 / 7", overflow: "hidden" }}>
-        {/* 素材が決まったら src="/hero.mp4" video のように渡す */}
-        <ImageSlot placeholder="トップの動画・メインビジュアルを配置" />
+        {/* public/hero/ の動画を順番に再生する */}
+        <HeroVideos />
       </section>
 
       <section
@@ -221,7 +215,7 @@ export default function LpPage() {
                 <div
                   style={{
                     fontFamily: "var(--font-heading)",
-                    fontVariantNumeric: "tabular-nums",
+                    fontVariantNumeric: "lining-nums tabular-nums",
                     fontSize: 28,
                     color: "var(--color-accent-700)",
                     borderTop: "1px solid var(--color-divider)",
@@ -298,7 +292,7 @@ export default function LpPage() {
                   fontFamily: "var(--font-heading)",
                   fontSize: 16,
                   color: "var(--color-accent-700)",
-                  fontVariantNumeric: "tabular-nums",
+                  fontVariantNumeric: "lining-nums tabular-nums",
                 }}
               >
                 {step.n}
@@ -354,7 +348,11 @@ export default function LpPage() {
         >
           {Array.from({ length: galleryCount }, (_, i) => (
             <div key={i} className="plate" style={{ aspectRatio: "3 / 2" }}>
-              <ImageSlot placeholder={`実績写真${i + 1}`} />
+              <ImageSlot
+                placeholder={`実績写真${i + 1}`}
+                src={`/gallery/${i + 1}.jpg`}
+                alt={`撮影実績 ${i + 1}`}
+              />
             </div>
           ))}
         </div>
@@ -381,7 +379,7 @@ export default function LpPage() {
               margin: "0 0 var(--space-4)",
             }}
           >
-            まずはお気軽にご相談ください
+            動画で「今」をいつでも会える瞬間に
           </h2>
           <div style={{ marginBottom: "var(--space-8)" }} />
           <Link href="/apply" className="btn btn-primary">
