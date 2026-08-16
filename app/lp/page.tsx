@@ -6,7 +6,8 @@ import "@/styles/classical.css";
 
 export const metadata = {
   title: "トキ映像製作所",
-  description: "日常は最高の宝物。出張撮影スタジオ トキ映像製作所。",
+  description:
+    "日常は最高の宝物　1日、1月、1年。そのすべてが、特別な「いつか」になるように。出張撮影はトキ映像製作所",
 };
 
 const plans = [
