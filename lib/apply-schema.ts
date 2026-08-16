@@ -1,13 +1,7 @@
 import { z } from "zod";
 
 // お申し込みフォームの選択肢。フォームUIとサーバー側バリデーションで共有する。
-export const PLAN_OPTIONS = [
-  "Ordinary",
-  "My Year",
-  "Event",
-  "Gift",
-  "★キャンペーン「ときつうしんみた！」",
-] as const;
+export const PLAN_OPTIONS = ["Ordinary", "My Year", "Event", "Gift"] as const;
 
 export const LOCATION_OPTIONS = [
   "東京都",
