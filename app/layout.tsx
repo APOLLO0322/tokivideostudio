@@ -2,6 +2,7 @@
 import "./globals.css";
 import { Zen_Kaku_Gothic_New, Cormorant_Garamond, Lora } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const zenKaku = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
@@ -71,7 +72,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        {/* Vercel Web Analytics。Cookieを使わないため同意バナーは不要。
+            計測開始にはVercelの管理画面でAnalyticsを有効化する必要がある。 */}
+        <Analytics />
+      </body>
     </html>
   );
 }
