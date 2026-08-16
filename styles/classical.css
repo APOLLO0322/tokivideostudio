@@ -322,6 +322,13 @@
   .classical .lp-flow { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
+/* ヒーロー。PCは横型動画に合わせて16:7、スマホは縦型動画に合わせて3:4。
+   比率を変えたい場合はこの2つの aspect-ratio を触る。 */
+.classical .lp-hero { aspect-ratio: 16 / 7; }
+@media (max-width: 640px) {
+  .classical .lp-hero { aspect-ratio: 3 / 4; }
+}
+
 /* ギャラリーは PC 3列 / スマホ 2列3行 */
 .classical .lp-gallery { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 860px) {

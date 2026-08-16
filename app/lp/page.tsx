@@ -78,7 +78,7 @@ export default function LpPage() {
         </Link>
       </header>
 
-      <section style={{ width: "100%", aspectRatio: "16 / 7", overflow: "hidden" }}>
+      <section className="lp-hero" style={{ width: "100%", overflow: "hidden" }}>
         {/* public/hero/ の動画を順番に再生する */}
         <HeroVideos />
       </section>
